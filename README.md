@@ -20,6 +20,14 @@ Drops the first 'n' elements of an array, returns the remainder of that array.
 drop<T> : (xs : [T], n : Nat) -> [T]
 ```
 
+### Split
+
+Splits an array in two parts, based on the given element index.
+
+```
+split<T> : (xs : [T], n : Nat) -> ([T], [T])
+```
+
 ### Take
 
 Returns the first 'n' elements of an array.

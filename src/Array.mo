@@ -16,6 +16,18 @@ module {
         Prim.Array_tabulate<T>(s, func (i : Nat) : T { xs[n + i]; });
     };
 
+    // Splits an array in two parts, based on the given element index.
+    public func split<T>(xs : [T], n : Nat) : ([T], [T]) {
+        if (n == 0) { return (xs, [] : [T]); };
+        let xS = xs.size();
+        if (xS <= n) { return ([] : [T], xs); };
+        let s = xS - n : Nat;
+        (
+            Prim.Array_tabulate<T>(n, func (i : Nat) : T { xs[i]; }),
+            Prim.Array_tabulate<T>(s, func (i : Nat) : T { xs[n + i]; })
+        );
+    };
+
     // Returns the first 'n' elements of an array.
     public func take<T>(xs : [T], n : Nat) : [T] {
         let xS = xs.size();

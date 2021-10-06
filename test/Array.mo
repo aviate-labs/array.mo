@@ -19,3 +19,9 @@ assert(Array.take<Nat>(xs, 1) == [1]);
 assert(Array.take<Nat>(xs, 2) == [1, 2]);
 assert(Array.take<Nat>(xs, 3) == xs);
 assert(Array.take<Nat>(xs, 9) == xs);
+
+assert(Array.split<Nat>(xs, 0) == (xs, []));
+assert(Array.split<Nat>(xs, 1) == ([1], [2, 3]));
+assert(Array.split<Nat>(xs, 2) == ([1, 2], [3]));
+assert(Array.split<Nat>(xs, 3) == ([], xs));
+assert(Array.split<Nat>(xs, 9) == ([], xs));
