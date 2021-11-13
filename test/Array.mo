@@ -25,3 +25,7 @@ assert(Array.split<Nat>(xs, 1) == ([1], [2, 3]));
 assert(Array.split<Nat>(xs, 2) == ([1, 2], [3]));
 assert(Array.split<Nat>(xs, 3) == ([], xs));
 assert(Array.split<Nat>(xs, 9) == ([], xs));
+
+assert(Array.slice<Nat>(xs, 0, 0) == [1]);
+assert(Array.slice<Nat>(xs, 1, 0) == []);
+assert(Array.slice<Nat>(xs, 0, 3) == xs);
