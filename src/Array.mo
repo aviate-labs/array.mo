@@ -1,4 +1,4 @@
-import Prim "mo:⛔";
+import { Array_tabulate } = "mo:⛔";
 
 module {
     // Checks whether an array contains a given value.
@@ -13,14 +13,14 @@ module {
         let xS = xs.size();
         if (xS <= n) return [];
         let s = xS - n : Nat;
-        Prim.Array_tabulate<T>(s, func (i : Nat) : T { xs[n + i]; });
+        Array_tabulate<T>(s, func (i : Nat) : T { xs[n + i]; });
     };
 
     // Slices out [i-j[ elements of an array.
     public func slice<T>(xs : [T], i : Nat, j : Nat) : [T] {
         if (j < i) return [];
         if (j == i) return [xs[i]];
-        Prim.Array_tabulate<T>(j - i, func (k : Nat) : T { xs[i+k]; });
+        Array_tabulate<T>(j - i, func (k : Nat) : T { xs[i+k]; });
     };
 
     // Splits an array in two parts, based on the given element index.
@@ -30,8 +30,8 @@ module {
         if (xS <= n) { return ([] : [T], xs); };
         let s = xS - n : Nat;
         (
-            Prim.Array_tabulate<T>(n, func (i : Nat) : T { xs[i]; }),
-            Prim.Array_tabulate<T>(s, func (i : Nat) : T { xs[n + i]; })
+            Array_tabulate<T>(n, func (i : Nat) : T { xs[i]; }),
+            Array_tabulate<T>(s, func (i : Nat) : T { xs[n + i]; })
         );
     };
 
@@ -39,6 +39,6 @@ module {
     public func take<T>(xs : [T], n : Nat) : [T] {
         let xS = xs.size();
         if (xS <= n) return xs;
-        Prim.Array_tabulate<T>(n, func (i : Nat) : T { xs[i]; });
+        Array_tabulate<T>(n, func (i : Nat) : T { xs[i]; });
     };
 };

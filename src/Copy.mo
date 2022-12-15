@@ -1,4 +1,4 @@
-import Nat "mo:base/Nat";
+import { min } = "mo:base-0.7.3/Nat";
 
 module {
     public func copy<T>(dst : [var T], src : [T]) {
@@ -6,7 +6,7 @@ module {
     };
 
     public func copyOffset<T>(dst : [var T], startDst : Nat, src : [T], startSrc : Nat) {
-        let n = Nat.min(
+        let n = min(
             dst.size() - startDst,
             src.size() - startSrc,  
         );
@@ -22,7 +22,7 @@ module {
     };
 
     public func copyOffsetVar<T>(dst : [var T], startDst : Nat, src : [var T], startSrc : Nat) {
-        let n = Nat.min(
+        let n = min(
             dst.size() - startDst,
             src.size() - startSrc,  
         );

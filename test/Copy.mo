@@ -1,21 +1,18 @@
-import Array "mo:base/Array";
-import Iter "mo:base/Iter";
+import { freeze; init } = "mo:base-0.7.3/Array";
+import { range; toArray } = "mo:base-0.7.3/Iter";
 
-import Debug "mo:base/Debug";
+import { copy; copyOffset; copyOffsetVar } = "../src/Copy";
 
-import Array_ "mo:base/Array";
-import Copy "../src/Copy";
+let n = init<Nat>(10, 0);
+let m = toArray(range(0, 9));
 
-let n = Array.init<Nat>(10, 0);
-let m = Iter.toArray(Iter.range(0, 9));
-
-Copy.copy(n, m);
-assert(Array.freeze(n) == m);
+copy(n, m);
+assert(freeze(n) == m);
 
 // copy(n[5:], m)
-Copy.copyOffset(n, 5, m, 0);
-assert(Array.freeze(n) == [0, 1, 2, 3, 4, 0, 1, 2, 3, 4]);
+copyOffset(n, 5, m, 0);
+assert(freeze(n) == [0, 1, 2, 3, 4, 0, 1, 2, 3, 4]);
 
 // copy(n[6:], n)
-Copy.copyOffsetVar(n, 6, n, 0);
-assert(Array.freeze(n) == [0, 1, 2, 3, 4, 0, 0, 1, 2, 3]);
+copyOffsetVar(n, 6, n, 0);
+assert(freeze(n) == [0, 1, 2, 3, 4, 0, 0, 1, 2, 3]);
